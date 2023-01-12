@@ -19,12 +19,12 @@ def get_found_records(text="", days=0):
 
     pages = response.json()['pages']
     for page in range(1,pages):
-        print(f'page {page}')
+        # print(f'page {page}')
         payload['page'] = page
         response = requests.get(url, params=payload)
         response.raise_for_status()
         all_data["items"] += response.json()["items"]
-        print(f'data size : {len(all_data["items"])} ')
+        # print(f'data size : {len(all_data["items"])} ')
     return all_data
 
 
