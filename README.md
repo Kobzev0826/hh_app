@@ -4,6 +4,7 @@ __Читать на других языках__\
 [RU](https://github.com/Kobzev0826/hh_app/blob/main/README_ru.md), [ENG](https://github.com/Kobzev0826/hh_app/blob/main/README_en.md)\
 программа для получения средней заработной платы с сервисов hh.ru и superjob.ru
 выводит в консоль 2 таблицы с данными о средней зарплаты для Программистов по языку программирования для каждого из сервисов.\
+
 __Список языков__
    1. JavaScript
    2. Java
@@ -32,6 +33,8 @@ pip install -r requirements.txt
 ```
 pip3 install -r requirements.txt
 ```
-
+### Как использовать
+запустить файл `main.py`\
+`python main.py`
 ### Цель проекта
 написан в образовательных целях
