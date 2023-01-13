@@ -47,40 +47,40 @@ def predict_rub_salary_for_superJob(vacancy):
     return None
 
 
-def get_sallary(records):
-    processed = 0
-    mid_salary = 0
-    for vacancy in records['items']:
-        salary = predict_rub_salary_for_superJob(vacancy)
-        if salary:
-            mid_salary+=salary
-            processed+=1
-    mid_salary /= processed
-    return mid_salary, processed
+# def get_sallary(records):
+#     processed = 0
+#     mid_salary = 0
+#     for vacancy in records['items']:
+#         salary = predict_rub_salary_for_superJob(vacancy)
+#         if salary:
+#             mid_salary+=salary
+#             processed+=1
+#     mid_salary /= processed
+#     return mid_salary, processed
 
 
-def get_sallary_by_language(language):
-    records = get_found_records(language)
-    mid_salary, processed =get_sallary(records)
-    # return {
-    #     "vacancies_found": records['found'],
-    #     "vacancies_processed": processed,
-    #     "average_salary": mid_salary
-    # }
-    return [language, records['found'],processed, mid_salary ]
+# def get_sallary_by_language(language):
+#     records = get_found_records(language)
+#     mid_salary, processed =get_sallary(records)
+#     # return {
+#     #     "vacancies_found": records['found'],
+#     #     "vacancies_processed": processed,
+#     #     "average_salary": mid_salary
+#     # }
+#     return [language, records['found'],processed, mid_salary ]
 
 
 
-if __name__ == '__main__':
-    dotenv.load_dotenv()
-    popular_languages = ['JavaScript', 'Java', 'Python', 'Ruby', 'PHP', 'C++', 'C#', 'C', 'Go']
-    # vacancies_by_language = {}
-    table_data = [
-        ['Язык программирования', 'Вакансий найдено', 'Вакансий обработано', "Средняя зарплата"],
-    ]
-    for language in popular_languages:
-        # vacancies_by_language[language] = get_sallary_by_language(language)
-        table_data.append(get_sallary_by_language(language))
+# if __name__ == '__main__':
+#     dotenv.load_dotenv()
+#     popular_languages = ['JavaScript', 'Java', 'Python', 'Ruby', 'PHP', 'C++', 'C#', 'C', 'Go']
+#     # vacancies_by_language = {}
+#     table_data = [
+#         ['Язык программирования', 'Вакансий найдено', 'Вакансий обработано', "Средняя зарплата"],
+#     ]
+#     for language in popular_languages:
+#         # vacancies_by_language[language] = get_sallary_by_language(language)
+#         table_data.append(get_sallary_by_language(language))
 
     # print(vacancies_by_language)
 
