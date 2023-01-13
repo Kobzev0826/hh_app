@@ -31,6 +31,8 @@ pip install -r requirements.txt
 ```
 pip3 install -r requirements.txt
 ```
-
+### Как использовать
+запустить файл `main.py`\
+`python main.py`
 ### Цель проекта
 написан в образовательных целях
