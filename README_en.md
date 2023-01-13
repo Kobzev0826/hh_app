@@ -30,6 +30,8 @@ If there is a conflict with python2.
 ```
 pip3 install -r requirements.txt
 ```
-
+### How to use
+запустить файл `main.py`\
+`python main.py`
 ### Project Goals
 written for educational purposes
