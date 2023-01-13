@@ -31,7 +31,6 @@ if __name__ == '__main__':
         ['Язык программирования', 'Вакансий найдено', 'Вакансий обработано', "Средняя зарплата"],
     ]
     for language in popular_languages:
-        # vacancies_by_language[language] = get_sallary_by_language(language)
         table_data_superjob.append(get_sallary_by_language(language, super_job_api.get_found_records, super_job_api.predict_rub_salary_for_superJob))
         table_data_hh.append(get_sallary_by_language(language, hh_app.get_found_records, hh_app.predict_rub_salary))
 
