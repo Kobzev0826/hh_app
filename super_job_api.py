@@ -1,5 +1,6 @@
 import os
 import requests
+from main import calc_salary
 
 
 def get_found_records(keyword):
@@ -22,7 +23,12 @@ def get_found_records(keyword):
         response.raise_for_status()
         response_json = response.json()
 
-        all_pages_response['found'] = response_json['total']
+        all_pages_response = {
+            'found' : response_json['total'],
+            
+        }
+
+        # all_pages_response['found'] = response_json['total']
         all_pages_response["items"] += response_json['objects']
         page += 1
         payload['page'] = page
@@ -32,12 +38,5 @@ def get_found_records(keyword):
 
 
 def predict_rub_salary_for_superJob(vacancy):
-    salary_from = vacancy['payment_from']
-    salary_to = vacancy['payment_to']
-    if salary_from and salary_to:
-        return (salary_from + salary_to) / 2
-    if salary_from:
-        return 1.2 * salary_from
-    if salary_to:
-        return 0.8 * salary_to
-    return None
+    return calc_salary(vacancy['payment_from'], vacancy['payment_to'])
+

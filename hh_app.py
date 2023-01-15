@@ -1,5 +1,5 @@
 import requests
-
+from main import calc_salary
 
 def get_found_records(query="", days=0):
     url = 'https://api.hh.ru/vacancies'
@@ -32,12 +32,5 @@ def predict_rub_salary(vacancy):
     salary = vacancy['salary']
     if not salary or salary['currency'] != 'RUR':
         return None
+    return calc_salary(salary['from'], salary['to'])
 
-    salary_from = salary['from']
-    salary_to = salary['to']
-    if salary_from and salary_to:
-        return (salary_from + salary_to) / 2
-    if salary_from:
-        return 1.2 * salary_from
-    if salary_to:
-        return 0.8 * salary_to
