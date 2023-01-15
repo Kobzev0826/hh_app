@@ -22,7 +22,7 @@ def get_found_records(keyword):
     while more:
         response = requests.get(url, headers=headers, params=payload)
         response.raise_for_status()
-        response_json = response_json
+        response_json = response.json()
 
         all_pages_response['found'] = response_json['total']
         all_pages_response["items"] += response_json['objects']
