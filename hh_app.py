@@ -1,12 +1,12 @@
 import requests
 from main import calc_salary
 
-def get_found_records(query="", days=0):
+def get_found_records(query="", days=0,professional_role = 96, area = 1, per_page = 100):
     url = 'https://api.hh.ru/vacancies'
     payload = {
-        'professional_role': 96,
-        'area': 1,
-        'per_page': 100,
+        'professional_role': professional_role,
+        'area': area,
+        'per_page': per_page,
         'text': query
     }
     if days != 0:
