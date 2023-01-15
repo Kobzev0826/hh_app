@@ -24,7 +24,6 @@ def get_found_records(query="", days=0,professional_role = 96, area = 1, per_pag
         response = requests.get(url, params=payload)
         response.raise_for_status()
         all_pages_response["items"] += response_json["items"]
-        # print(f'data size : {len(all_data["items"])} ')
     return all_pages_response
 
 
