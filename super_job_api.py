@@ -22,12 +22,13 @@ def get_found_records(keyword):
     while more:
         response = requests.get(url, headers=headers, params=payload)
         response.raise_for_status()
+        response_json = response_json
 
-        all_pages_response['found'] = response.json()['total']
-        all_pages_response["items"] += response.json()['objects']
+        all_pages_response['found'] = response_json['total']
+        all_pages_response["items"] += response_json['objects']
         page += 1
         payload['page'] = page
-        more = response.json()['more']
+        more = response_json['more']
 
     return all_pages_response
 
