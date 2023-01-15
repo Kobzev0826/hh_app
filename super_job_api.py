@@ -3,10 +3,10 @@ import requests
 
 def get_found_records(keyword):
 
-    Secret_Key = os.environ['SuperJob']
+    secret_key = os.environ['SuperJob']
     url = 'https://api.superjob.ru/2.0/vacancies/'
     headers ={
-            'X-Api-App-Id' : Secret_Key
+            'X-Api-App-Id' : secret_key
         }
     payload ={
     'town': 'Moscow',
