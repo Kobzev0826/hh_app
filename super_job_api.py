@@ -12,24 +12,24 @@ def get_found_records(keyword):
     'town': 'Moscow',
         'keyword': keyword,
         'count' : 100
-
     }
     page = 0
     more = True
-    all_data = {}
-    all_data["items"]=[]
-    all_data["found"] = 0
+    all_pages_response = {}
+    all_pages_response["items"]=[]
+    all_pages_response["found"] = 0
+
     while more :
         response = requests.get(url, headers=headers, params=payload)
         response.raise_for_status()
 
-        all_data['found'] = response.json()['total']
-        all_data["items"] += response.json()['objects']
+        all_pages_response['found'] = response.json()['total']
+        all_pages_response["items"] += response.json()['objects']
         page += 1
         payload ['page'] = page
         more = response.json()['more']
 
-    return all_data
+    return all_pages_response
 
 
 def predict_rub_salary_for_superJob(vacancy):
