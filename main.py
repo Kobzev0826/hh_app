@@ -9,8 +9,8 @@ def get_sallary(records, predict_func):
     for vacancy in records['items']:
         salary = predict_func(vacancy)
         if salary:
-            mid_salary+=salary
-            processed+=1
+            mid_salary += salary
+            processed += 1
     if processed:
         mid_salary /= processed
 
@@ -19,8 +19,8 @@ def get_sallary(records, predict_func):
 
 def get_language_statistics(language, found_records, predict_func):
     vacancies = found_records(language)
-    mid_salary, processed =get_sallary(vacancies,predict_func)
-    return [language, vacancies['found'],processed, mid_salary ]
+    mid_salary, processed = get_sallary(vacancies, predict_func)
+    return [language, vacancies['found'], processed, mid_salary]
 
 
 if __name__ == '__main__':
@@ -33,7 +33,8 @@ if __name__ == '__main__':
         ['Язык программирования', 'Вакансий найдено', 'Вакансий обработано', "Средняя зарплата"],
     ]
     for language in popular_languages:
-        table_superjob.append(get_language_statistics(language, super_job_api.get_found_records, super_job_api.predict_rub_salary_for_superJob))
+        table_superjob.append(get_language_statistics(language, super_job_api.get_found_records,
+                                                      super_job_api.predict_rub_salary_for_superJob))
         table_hh.append(get_language_statistics(language, hh_app.get_found_records, hh_app.predict_rub_salary))
 
     print(AsciiTable(table_superjob, 'SuperJob.ru').table)
