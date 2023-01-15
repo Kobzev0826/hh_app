@@ -15,9 +15,7 @@ def get_found_records(keyword):
     }
     page = 0
     more = True
-    all_pages_response = {}
-    all_pages_response["items"] = []
-    all_pages_response["found"] = 0
+    all_pages_response = {"items": [], "found": 0}
 
     while more:
         response = requests.get(url, headers=headers, params=payload)
