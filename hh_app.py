@@ -14,18 +14,16 @@ def get_found_records(text="", days=0):
 
     response = requests.get(url,params=payload)
     response.raise_for_status()
-    # all_data={}
-    all_data = response.json()
+    all_pages_response = response.json()
 
     pages = response.json()['pages']
     for page in range(1,pages):
-        # print(f'page {page}')
         payload['page'] = page
         response = requests.get(url, params=payload)
         response.raise_for_status()
-        all_data["items"] += response.json()["items"]
+        all_pages_response["items"] += response.json()["items"]
         # print(f'data size : {len(all_data["items"])} ')
-    return all_data
+    return all_pages_response
 
 
 def predict_rub_salary(vacancy):
