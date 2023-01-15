@@ -3,15 +3,15 @@ import requests
 from main import calc_salary
 
 
-def get_found_records(keyword):
-    secret_key = os.environ['SuperJob']
+def get_found_records(query = "", secret_key = ""):
+    # secret_key = os.environ['SuperJob']
     url = 'https://api.superjob.ru/2.0/vacancies/'
     headers = {
         'X-Api-App-Id': secret_key
     }
     payload = {
         'town': 'Moscow',
-        'keyword': keyword,
+        'keyword': query,
         'count': 100
     }
     page = 0

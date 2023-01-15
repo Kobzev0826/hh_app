@@ -1,5 +1,5 @@
 import super_job_api, hh_app
-import dotenv
+import dotenv, os
 from terminaltables import AsciiTable
 
 
@@ -27,8 +27,8 @@ def get_sallary(records, predict_func):
     return mid_salary, processed
 
 
-def get_language_statistics(language, found_records, predict_func):
-    vacancies = found_records(language)
+def get_language_statistics(language, found_records, predict_func, secret_key):
+    vacancies = found_records(query = language,secret_key =secret_key )
     mid_salary, processed = get_sallary(vacancies, predict_func)
     return [language, vacancies['found'], processed, mid_salary]
 
@@ -43,9 +43,14 @@ if __name__ == '__main__':
         ['Язык программирования', 'Вакансий найдено', 'Вакансий обработано', "Средняя зарплата"],
     ]
     for language in popular_languages:
-        table_superjob.append(get_language_statistics(language, super_job_api.get_found_records,
-                                                      super_job_api.predict_rub_salary_for_superJob))
-        table_hh.append(get_language_statistics(language, hh_app.get_found_records, hh_app.predict_rub_salary))
+        table_superjob.append(get_language_statistics(language,
+                                                      super_job_api.get_found_records,
+                                                      super_job_api.predict_rub_salary_for_superJob,
+                                                      secret_key=os.environ['SuperJob']))
+        table_hh.append(get_language_statistics(language,
+                                                hh_app.get_found_records,
+                                                hh_app.predict_rub_salary,
+                                                secret_key=""))
 
     print(AsciiTable(table_superjob, 'SuperJob.ru').table)
     print(AsciiTable(table_hh, 'HeadHunter.ru').table)

@@ -1,7 +1,7 @@
 import requests
 from main import calc_salary
 
-def get_found_records(query="", days=0,professional_role = 96, area = 1, per_page = 100):
+def get_found_records(query="", days=0,professional_role = 96, area = 1, per_page = 100,secret_key = ""):
     url = 'https://api.hh.ru/vacancies'
     payload = {
         'professional_role': professional_role,
