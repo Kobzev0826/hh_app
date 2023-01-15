@@ -24,17 +24,15 @@ def get_sallary_by_language(language, found_records, predict_func):
 if __name__ == '__main__':
     dotenv.load_dotenv()
     popular_languages = ['JavaScript', 'Java', 'Python', 'Ruby', 'PHP', 'C++', 'C#', 'C', 'Go']
-    table_data_superjob = [
+    table_superjob = [
         ['Язык программирования', 'Вакансий найдено', 'Вакансий обработано', "Средняя зарплата"],
     ]
-    table_data_hh = [
+    table_hh = [
         ['Язык программирования', 'Вакансий найдено', 'Вакансий обработано', "Средняя зарплата"],
     ]
     for language in popular_languages:
-        table_data_superjob.append(get_sallary_by_language(language, super_job_api.get_found_records, super_job_api.predict_rub_salary_for_superJob))
-        table_data_hh.append(get_sallary_by_language(language, hh_app.get_found_records, hh_app.predict_rub_salary))
+        table_superjob.append(get_sallary_by_language(language, super_job_api.get_found_records, super_job_api.predict_rub_salary_for_superJob))
+        table_hh.append(get_sallary_by_language(language, hh_app.get_found_records, hh_app.predict_rub_salary))
 
-    table_superjob = AsciiTable(table_data_superjob, 'SuperJob.ru')
-    table_hh = AsciiTable(table_data_hh, 'HeadHunter.ru')
-    print(table_superjob.table)
-    print(table_hh.table)
+    print(AsciiTable(table_superjob, 'SuperJob.ru').table)
+    print(AsciiTable(table_hh, 'HeadHunter.ru').table)
