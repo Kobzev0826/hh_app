@@ -14,16 +14,16 @@ def get_found_records(query="", days=0,professional_role = 96, area = 1, per_pag
 
     response = requests.get(url, params=payload)
     response.raise_for_status()
-    response_json = response.json()
+    response = response.json()
 
-    all_pages_response = response_json
+    all_pages_response = response
 
-    pages = response_json['pages']
+    pages = response['pages']
     for page in range(1, pages):
         payload['page'] = page
         response = requests.get(url, params=payload)
         response.raise_for_status()
-        all_pages_response["items"] += response_json["items"]
+        all_pages_response["items"] += response.json()["items"]
     return all_pages_response
 
 

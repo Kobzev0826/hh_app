@@ -20,16 +20,16 @@ def get_found_records(query = "", secret_key = ""):
     while more:
         response = requests.get(url, headers=headers, params=payload)
         response.raise_for_status()
-        response_json = response.json()
+        response = response.json()
 
         all_pages_response = {
-            'found' : response_json['total'],
-            'items' : all_pages_response['items']+response_json['objects']
+            'found' : response['total'],
+            'items' : all_pages_response['items']+response['objects']
         }
 
         page += 1
         payload['page'] = page
-        more = response_json['more']
+        more = response['more']
 
     return all_pages_response
 
