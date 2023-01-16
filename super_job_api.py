@@ -27,8 +27,6 @@ def get_found_records(query = "", secret_key = ""):
             'items' : all_pages_response['items']+response_json['objects']
         }
 
-        # all_pages_response['found'] = response_json['total']
-        # all_pages_response["items"] += response_json['objects']
         page += 1
         payload['page'] = page
         more = response_json['more']
