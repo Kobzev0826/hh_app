@@ -9,7 +9,7 @@ def get_found_records(query="", days=0,professional_role = 96, area = 1, per_pag
         'per_page': per_page,
         'text': query
     }
-    if days != 0:
+    if days:
         payload['period'] = days
 
     response = requests.get(url, params=payload)
